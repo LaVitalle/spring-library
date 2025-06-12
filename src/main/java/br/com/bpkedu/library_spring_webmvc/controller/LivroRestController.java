@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/livros")
+@RequestMapping("/api/livros")
 public class LivroRestController {
 
     @Autowired
@@ -21,17 +21,15 @@ public class LivroRestController {
 //        this.livroService = livroService;
 //    }
 
-    @GetMapping("/getAll")
+    @GetMapping
     public List<Livro> getAll(){
         return livroService.listarTodos();
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Livro> novoLivro(@RequestBody LivroDTO livroDTO){
         Livro livro = livroDTO.toLivro(livroDTO);
-
         Livro saved =  livroService.salvar(livro);
-
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 
