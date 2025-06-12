@@ -1,4 +1,4 @@
-package br.com.bpkedu.library_spring_webmvc.controller.api;
+package br.com.bpkedu.library_spring_webmvc.controller;
 
 import br.com.bpkedu.library_spring_webmvc.domain.Usuario;
 import br.com.bpkedu.library_spring_webmvc.service.UsuarioService;

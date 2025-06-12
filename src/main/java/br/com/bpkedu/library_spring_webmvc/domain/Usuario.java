@@ -1,7 +1,8 @@
 package br.com.bpkedu.library_spring_webmvc.domain;
 
-
 import jakarta.persistence.*;
+import java.util.List;
+import jakarta.persistence.OneToMany;
 
 @Entity
 @Table(name = "usuarios")
@@ -15,6 +16,9 @@ public class Usuario {
     private String email;
     private String endereco;
     private String telefone;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Emprestimo> emprestimos;
 
     public Long getId() {
         return id;
@@ -40,15 +44,23 @@ public class Usuario {
         return telefone;
     }
 
+    public List<Emprestimo> getEmprestimos() {
+        return emprestimos;
+    }
+
+    public void setEmprestimos(List<Emprestimo> emprestimos) {
+        this.emprestimos = emprestimos;
+    }
+
     @Override
     public String toString() {
         return "Usuario{" +
-            "id=" + id +
-            ", nome='" + nome + '\'' +
-            ", senha='" + senha + '\'' +
-            ", email='" + email + '\'' +
-            ", endereco='" + endereco + '\'' +
-            ", telefone='" + telefone + '\'' +
-            '}';
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", senha='" + senha + '\'' +
+                ", email='" + email + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", telefone='" + telefone + '\'' +
+                '}';
     }
 }
